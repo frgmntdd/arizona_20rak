@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="termuh-token" content="__TOKEN__">
+  <title>Termuh · Control Center</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">T<span>.</span></span>
+        <div>
+          <strong>termuh</strong>
+          <small>CONTROL CENTER</small>
+        </div>
+      </div>
+
+      <div class="side-label">РАБОЧЕЕ ПРОСТРАНСТВО</div>
+      <nav class="side-nav" aria-label="Основная навигация">
+        <a class="nav active" href="#overview">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="2.5" width="6.2" height="6.2" rx="1.5"/>
+              <rect x="11.3" y="2.5" width="6.2" height="6.2" rx="1.5"/>
+              <rect x="2.5" y="11.3" width="6.2" height="6.2" rx="1.5"/>
+              <path d="M14.4 11.3v6.2M11.3 14.4h6.2"/>
+            </svg>
+          </span>
+          <em>Обзор</em>
+          <b>01</b>
+        </a>
+        <a class="nav" href="#accounts">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6.5h14M3 10h14M3 13.5h9"/>
+              <circle cx="15.5" cy="13.5" r="2"/>
+            </svg>
+          </span>
+          <em>Аккаунты</em>
+          <b>02</b>
+        </a>
+      </nav>
+
+      <div class="side-bottom">
+        <div class="shield" aria-hidden="true">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 2.2 3.8 4.9v4.6c0 4.2 2.6 7.9 6.2 9.3 3.6-1.4 6.2-5.1 6.2-9.3V4.9L10 2.2Z"/>
+            <path d="m7.6 10.1 1.7 1.7 3.3-3.5"/>
+          </svg>
+        </div>
+        <div>
+          <b>Локальная панель</b>
+          <p>Данные и сессии изолированы на этом устройстве</p>
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <header>
+        <div class="crumb">
+          <span>РАБОЧЕЕ ПРОСТРАНСТВО</span>
+          <i>/</i>
+          <strong>Обзор телеметрии</strong>
+        </div>
+        <div class="header-right">
+          <div class="connection-pill">
+            <span class="live-dot"></span>
+            <span id="connection">Подключение</span>
+          </div>
+          <div class="avatar" title="Termuh Local Node">T</div>
+        </div>
+      </header>
+
+      <div class="content" id="overview">
+        <section class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span></span> ЦЕНТР УПРАВЛЕНИЯ СЕССИЯМИ</div>
+            <h1>Всё под <em>контролем.</em></h1>
+            <p>Мониторинг аккаунтов, живая телеметрия позиции, перехват серверных диалогов и управление клиентами в реальном времени.</p>
+            <div class="hero-actions">
+              <button class="primary" id="open-add">
+                <span>＋</span> Добавить аккаунт
+              </button>
+              <a class="secondary hero-link" href="#accounts">К списку профилей</a>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true">
+            <div class="art-ring ring-a"></div>
+            <div class="art-ring ring-b"></div>
+            <div class="art-ring ring-c"></div>
+            <div class="art-sweep"></div>
+            <div class="art-crosshair crosshair-h"></div>
+            <div class="art-crosshair crosshair-v"></div>
+            <div class="art-orbit orbit-one"></div>
+            <div class="art-orbit orbit-two"></div>
+            <div class="art-core">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="16 3 29 16 16 29 3 16"/>
+                <circle cx="16" cy="16" r="4"/>
+              </svg>
+            </div>
+            <div class="art-label">
+              <span class="live-dot"></span> СИСТЕМА АКТИВНА
+            </div>
+          </div>
+        </section>
+
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow muted">КРАТКАЯ СВОДКА</div>
+            <h2>Рабочий стол</h2>
+          </div>
+          <span class="refresh">
+            <i class="refresh-dot"></i> Цикл опроса: 3 сек.
+          </span>
+        </div>
+
+        <section class="metrics" aria-label="Сводные показатели">
+          <article class="metric">
+            <div class="metric-top">
+              АККАУНТЫ
+              <span aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="2.5" y="3.5" width="15" height="13" rx="2.5"/>
+                  <path d="M6.5 8h7M6.5 12h4.5"/>
+                </svg>
+              </span>
+            </div>
+            <div class="metric-value" id="metric-total">—</div>
+            <p>Всего созданных профилей</p>
+          </article>
+
+          <article class="metric metric-online-card">
+            <div class="metric-top">
+              В СЕТИ
+              <span class="green" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <circle cx="10" cy="10" r="3"/>
+                  <path d="M4.9 4.9a7.2 7.2 0 0 0 0 10.2M15.1 4.9a7.2 7.2 0 0 1 0 10.2"/>
+                </svg>
+              </span>
+            </div>
+            <div class="metric-value" id="metric-online">—</div>
+            <p>Активные соединения с сервером</p>
+          </article>
+
+          <article class="metric metric-drift-card">
+            <div class="metric-top">
+              ПОЗИЦИЯ
+              <span class="orange" aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <circle cx="10" cy="10" r="6.5"/>
+                  <path d="M10 1.5v3M10 15.5v3M1.5 10h3M15.5 10h3"/>
+                </svg>
+              </span>
+            </div>
+            <div class="metric-value" id="metric-drift">—</div>
+            <p>Смещение от точки более 1 м</p>
+          </article>
+        </section>
+
+        <section id="accounts" class="accounts-section">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow muted">МОИ ПРОФИЛИ</div>
+              <h2>Аккаунты <span class="count" id="account-count">0</span></h2>
+            </div>
+            <button class="secondary" id="open-add-secondary">＋ Добавить профиль</button>
+          </div>
+
+          <div class="account-toolbar">
+            <label class="search-label">
+              <span aria-hidden="true">
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                  <circle cx="8.8" cy="8.8" r="5.5"/>
+                  <path d="m13 13 4 4"/>
+                </svg>
+              </span>
+              <input id="account-search" type="search" placeholder="Поиск по нику или серверу..." aria-label="Поиск аккаунта">
+            </label>
+
+            <div class="filter-group" role="group" aria-label="Фильтр аккаунтов">
+              <button class="filter active" data-filter="all" type="button">Все</button>
+              <button class="filter" data-filter="online" type="button">В сети</button>
+              <button class="filter" data-filter="attention" type="button">Внимание</button>
+            </div>
+          </div>
+
+          <div class="notice-strip" id="alerts" hidden></div>
+          <div id="cards" class="cards"></div>
+          <div class="no-matches" id="no-matches" hidden>По выбранному фильтру или запросу аккаунтов не найдено.</div>
+
+          <div class="empty" id="empty" hidden>
+            <div class="empty-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 12 12 22 2 12"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3>Здесь будут твои аккаунты</h3>
+            <p>Добавь первый профиль, чтобы отслеживать подключение, статистику и координаты персонажа.</p>
+            <button class="secondary" id="open-add-empty" type="button">Добавить профиль <span>↗</span></button>
+          </div>
+        </section>
+
+        <footer>
+          <span>TERMUH <b>CONTROL CENTER</b></span>
+          <span>Локальный контур безопасности <i>✳</i></span>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="profile-modal">
+    <form id="profile-form">
+      <div class="modal-head">
+        <div>
+          <div class="eyebrow muted">НОВЫЙ ПРОФИЛЬ</div>
+          <h2>Добавить аккаунт</h2>
+        </div>
+        <button class="close" type="button" data-close="profile-modal" aria-label="Закрыть">×</button>
+      </div>
+      <label>
+        Никнейм персонажа
+        <input id="nick" required maxlength="24" placeholder="Имя_Фамилия" autocomplete="off">
+      </label>
+      <label>
+        Игровой сервер
+        <select id="server" required></select>
+      </label>
+      <p class="hint">Пароль не сохраняется в профиле и запрашивается только в момент запуска клиента.</p>
+      <button class="primary wide" type="submit">Добавить профиль <span>↗</span></button>
+    </form>
+  </dialog>
+
+  <dialog id="start-modal">
+    <form id="start-form">
+      <div class="modal-head">
+        <div>
+          <div class="eyebrow muted">ПОДКЛЮЧЕНИЕ СЕССИИ</div>
+          <h2>Запустить клиента</h2>
+        </div>
+        <button class="close" type="button" data-close="start-modal" aria-label="Закрыть">×</button>
+      </div>
+      <p class="hint account-pill" id="start-account"></p>
+      <label>
+        Пароль от аккаунта
+        <input id="password" type="password" required autocomplete="off" placeholder="Введите пароль сессии">
+      </label>
+      <label class="launcher-toggle">
+        <input id="launcher-enabled" type="checkbox">
+        <span>
+          <strong>Эмуляция лаунчера</strong>
+          <small>Экспериментально: передаёт идентификаторы официального лаунчера</small>
+        </span>
+      </label>
+      <p class="hint">На время активной сессии пароль передаётся клиенту в локальный файл конфигурации и удаляется после остановки.</p>
+      <button class="primary wide" type="submit">Подключить клиент <span>↗</span></button>
+    </form>
+  </dialog>
+
+  <dialog id="native-dialog-modal">
+    <div class="modal-head">
+      <div>
+        <div class="eyebrow muted" id="native-account">ДИАЛОГ</div>
+        <h2 id="native-title"></h2>
+      </div>
+      <button class="close" type="button" data-close="native-dialog-modal" aria-label="Закрыть">×</button>
+    </div>
+    <div class="dialog-meta" id="native-meta"></div>
+    <pre class="dialog-body" id="native-body"></pre>
+    <label id="native-list-label" hidden>
+      Выберите строку списка
+      <select id="native-list"></select>
+    </label>
+    <label id="native-input-label" hidden>
+      Текст ответа
+      <input id="native-input" autocomplete="off" maxlength="255" placeholder="Введите значение...">
+    </label>
+    <p class="hint" id="native-warning">Ответ отправляется только для этого окна. Если сервер покажет новое окно, откройте его заново.</p>
+    <div class="dialog-actions">
+      <button class="secondary" type="button" id="native-button2" hidden></button>
+      <button class="primary" type="button" id="native-button1" hidden></button>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
